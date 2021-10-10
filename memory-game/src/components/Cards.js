@@ -104,7 +104,7 @@ class Cards extends React.Component{
             a[i] = a[j];
             a[j] = x;
         }
-        console.log(a);
+        // console.log(a);
         this.setState({superheroes:a})
     }
     
@@ -124,6 +124,7 @@ class Cards extends React.Component{
             this.setState({score: 0})
             
         }
+        this.shuffle(this.state.superheroes)
     }
     moveDivs=(index)=>{
         // console.log(index);
@@ -131,7 +132,7 @@ class Cards extends React.Component{
         let heroes2 = this.state.superheroes;
         let counter = this.state.score
         if (heroes2[index].clicked) {
-            console.log('should restart game');
+            // console.log('should restart game');`
             this.restartGame()
         }else{
             this.setState({score: ++counter})
@@ -166,8 +167,8 @@ class Cards extends React.Component{
                 <div>
                     {arr.map((item, index) =>{
                        return( 
-                       <div className='card' onClick={()=> this.moveDivs(index)} style={{display:'inline-block'}}>
-                            <img style={{width: '200px', height: '250px', objectFit:'cover', borderRadius: '5px'}} src={item.image}/>
+                       <div key={item.id} className='card' onClick={()=> this.moveDivs(index)} style={{display:'inline-block'}}>
+                            <img style={{width: '200px', height: '250px', objectFit:'cover', borderRadius: '5px'}} src={item.image} alt={item.name}/>
                             <h3>{item.name}</h3>
                             <p>{item.occupation}</p>
                             
